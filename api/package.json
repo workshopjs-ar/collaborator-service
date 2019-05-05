@@ -1,0 +1,54 @@
+{
+  "name": "collaborator-service",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "repository": "git@github.com:workshopjs-ar/collaborator-service.git",
+  "author": "Alan Szpigiel <alanszp@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test node_modules/.bin/nyc mocha",
+    "start": "./node_modules/.bin/pm2 start dist/start.js --name invoice-api --no-daemon",
+    "start-dev": "./node_modules/.bin/pm2 start dist/start.js --watch dist --name invoice-api --no-daemon --source-map-support",
+    "dev": "npm run build && ./node_modules/.bin/concurrently --kill-others \"npm run compile-watch\" \"npm run start-dev\"",
+    "stop": "./node_modules/.bin/pm2 stop invoice-api",
+    "restart": "./node_modules/.bin/pm2 reload invoice-api",
+    "compile": "./node_modules/.bin/tsc",
+    "compile-watch": "./node_modules/.bin/tsc -w",
+    "build": "yarn run lint && yarn run copy-files && yarn run compile",
+    "lint": "./node_modules/.bin/tslint 'src/**/*.ts' --project 'tsconfig.json'",
+    "status": "./node_modules/.bin/pm2 status",
+    "copy-files": "./node_modules/gulp/bin/gulp.js copy-files",
+    "cleanup": "./node_modules/gulp/bin/gulp.js cleanup"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@types/node": "8.10",
+    "convict": "^4.4.1",
+    "typescript": "3.2.2"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx",
+      ".js"
+    ],
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "lcov"
+    ],
+    "all": true,
+    "sourceMap": true,
+    "instrument": true
+  }
+}
