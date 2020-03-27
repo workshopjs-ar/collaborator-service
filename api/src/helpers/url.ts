@@ -1,7 +1,7 @@
 import { parse } from "url";
 import { ParsedUrlQuery } from "querystring";
 
-export const ROOT_PATH = '_root';
+export const ROOT_PATH = '/';
 export const SUBPATH_QSK = '_subpath';
 
 export function queryParams(url: string): ParsedUrlQuery {

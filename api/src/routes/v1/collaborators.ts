@@ -4,7 +4,7 @@ import {ROOT_PATH} from "../../helpers/url";
 
 const router: BasicRouterDefinition = {
     [HttpMethod.GET]: {
-        [ROOT_PATH]: getAll
+        '/': getAll,
     }
 };
 

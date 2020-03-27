@@ -31,7 +31,7 @@ export function basicRouter(router: BasicRouterDefinition): Controller {
             return;
         }
 
-        const action = (routerByMethod[subPath] as Controller);
+        const action = (routerByMethod[subPath] as Controller) || (routerByMethod['/' + subPath] as Controller);
         if (!action) {
             notFound(res);
             return;
