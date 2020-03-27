@@ -8,6 +8,7 @@
   ],
   "routes": [
     { "src": "/api/v(?<ver>[0-9]+)/(?<endpoint>[^/]+)(/(?<subpath>.*))?", "dest": "/api/src/routes/v$ver/$endpoint.ts?_subpath=$subpath" },
-    { "src": "/api/(.*)", "dest": "/api/src/routes/helper/404.ts" }
+    { "src": "/api/(.*)", "dest": "/api/src/routes/helper/404.ts" },
+    { "src": "(.*)", "dest": "/api/src/routes/helper/404.ts" }
   ]
 }

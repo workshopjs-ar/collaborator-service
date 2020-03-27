@@ -20,7 +20,9 @@
     "copy-files": "./node_modules/gulp/bin/gulp.js copy-files",
     "cleanup": "./node_modules/gulp/bin/gulp.js cleanup"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@now/node": "^1.0.0"
+  },
   "dependencies": {
     "@types/node": "8.10",
     "convict": "^4.4.1",

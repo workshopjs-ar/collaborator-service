@@ -1,4 +1,8 @@
-import {notFound} from "../../helpers/response";
+import {json, notFound} from "../../helpers/response";
 import {ServerResponse} from "http";
 
-export default (_, res: ServerResponse) => { notFound(res);}
+export default (_, res: ServerResponse) => {
+    json(res, {
+        code: 404,
+    }, 404);
+}
